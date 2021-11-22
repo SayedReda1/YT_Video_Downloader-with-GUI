@@ -4,15 +4,15 @@ import time
 
 # the input data
 type = input("Video or Audio: ").strip().lower()
-url = input("Enter Video URL: ")
-resolution = input("Enter the resolution: ")
+url = input("Enter Video URL: ").strip()
+resolution = input("Enter the resolution: ").strip().lower()
 path = input("Enter file path to download: ")
 abs_path = os.path.abspath(path)        # transfer the input path to abs path
 
 # calling the module
 vid = YouTube(url)
 try:
-    # execute the itag for the selected resolution
+    # execute the itag for the selected resolution for the audio or video
     itag = []
     if type == "video":
         for str in vid.streams.filter(res=resolution, subtype="mp4"):
@@ -38,8 +38,8 @@ except:
 finally:
     print("Window will close after....")
     time.sleep(1)
-    for s in range(1,4):
-        print(s)
+    for sec in reversed(range(1,4)):
+        print(sec)
         time.sleep(1)
 
 
